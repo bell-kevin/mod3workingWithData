@@ -4,15 +4,15 @@ This exercise demonstrates your competency in the skills learned in this module.
 
 These are the skills you practiced in this and previous modules and will now demonstrate:
 
-Handling exceptions
+-Handling exceptions
 
-Using STL functions
+-Using STL functions
 
-Using template functions
+-Using template functions
 
-Using iterators
+-Using iterators
 
-Using vectors 
+-Using vectors 
 
 Module 3 Competency Exercise: Working with Data
 
