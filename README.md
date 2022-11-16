@@ -5,11 +5,14 @@ This exercise demonstrates your competency in the skills learned in this module.
 These are the skills you practiced in this and previous modules and will now demonstrate:
 
 Handling exceptions
+
 Using STL functions
+
 Using template functions
+
 Using iterators
-Using vectors
- 
+
+Using vectors 
 
 Module 3 Competency Exercise: Working with Data
 
@@ -19,7 +22,7 @@ Ask the user for 10 integers between 20 and 50. Check if the input is outside of
 
 That portion of the output (for integer numbers) would look like this:
 
-M3 Competency
+![M3 Competency](https://github.com/bell-kevin/mod3workingWithData/blob/main/part1.PNG)
 
 Then do the same for 10 doubles in the range of 60 to 100, which would look like this:
 
