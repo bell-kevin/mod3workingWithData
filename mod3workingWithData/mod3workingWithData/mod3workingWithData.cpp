@@ -18,6 +18,7 @@ void printVector(const vector<T>& v, ostream& os)
 class Input {
 private:
 	int input = 0;
+	double doubleInput = 0;
 public:
 	//exception classes
 	class TooLow {};
@@ -121,6 +122,7 @@ int main() {
 
 	
 	cout << "DOUBLE version\n";
+	Input doubleInput;
 	bool inputDoubleValid = false;
 	//create vector
 	vector<double> dv;
@@ -129,7 +131,7 @@ int main() {
 		//get input
 		cout << "Enter a double between 60 and 100: ";
 		try {
-			inputDoubleValid = input.getDoubleInput();
+			inputDoubleValid = doubleInput.getDoubleInput();
 		}
 		catch (Input::TooDoubleLow) {
 			cout << "Input is too low.\n\n";
@@ -141,13 +143,13 @@ int main() {
 		}
 		//if input is valid, add to vector
 		if (inputDoubleValid) {
-			dv.push_back(input.getDoubleInputValue());
+			dv.push_back(doubleInput.getDoubleInputValue());
 		}
 	}
 	//print vector
 	cout << "Vector contains:\n";
 	printVector(dv, cout);
-	cout << endl;	
+	cout << endl;
 	//smallest value
 	cout << "Smallest one is " << *min_element(dv.begin(), dv.end()) << endl;
 	//largest value
