@@ -6,62 +6,164 @@
 #include <algorithm>
 #include <iterator>
 using namespace std;
-//template function
+
 template <typename T>
 void printVector(const vector<T>& v, ostream& os)
 {
-	copy(v.begin(), v.end(), ostream_iterator<T>(os, " "));
+	copy(v.begin(), v.end(), ostream_iterator<T>(os, "  "));
 	os << endl;
 }
 
 
-int main()
-{
-    cout << "Module 3 Competency Project by Kevin Bell\n\n";
-	cout << "Enter an integer between 20 and 50: ";
-	int num;
-	cin >> num;
-	// try catch block to catch invalid input
-	try
-	{
-		if (num < 20 || num > 50)
-		{
-			throw num;
+class Input {
+private:
+	int input = 0;
+public:
+	//exception classes
+	class TooLow {};
+	class TooHigh {};
+	class TooDoubleLow {};
+	class TooDoubleHigh {};
+	
+	Input(){
+		input = 0;
+	}
+	
+	bool getInput(){
+		int temp = 0;
+		cin >> temp;
+		if (temp < 20) {
+			throw TooLow();
+		}
+		else if (temp > 50) {
+			throw TooHigh();
+		}
+		else {
+			input = temp;
+			return true;
 		}
 	}
-	catch (int num)
-	{
-		cout << "Invalid input. Please enter an integer between 20 and 50: ";
-		cin >> num;
+
+	bool getDoubleInput(){
+		int temp = 0;
+		cin >> temp;
+		if (temp < 60){
+			throw TooDoubleLow();
+		}
+		else if (temp > 100) {
+			throw TooDoubleHigh();
+		}
+		else {
+			input = temp;
+			return true;
+		}
 	}
-	// create vector of size num
-	vector<int> v(num);
-	// fill vector with random numbers
-	for (int i = 0; i < num; i++)
-	{
-		v[i] = rand() % 100;
+	
+	//return double input
+	int getDoubleInputValue() {
+		return input;
 	}
-	// print vector
-	cout << "Vector: ";
-	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+	
+	//return input
+	int getInputValue(){
+		return input;
+	}
+};
+
+int main() {
+	Input input;
+	bool inputValid = false;
+	//create vector
+	vector<int> v;
+	cout << "Module 3 Competency Project by Kevin Bell\n\n";
+	//loop 10 times
+	for (int i = 0; i < 10; i++) {
+		//get input
+		cout << "Enter an integer between 20 and 50: ";
+		try {
+			inputValid = input.getInput();
+		}
+		catch (Input::TooLow) {
+			cout << "Input is too low.\n\n";
+			i--;
+		}
+		catch (Input::TooHigh) {
+			cout << "Input is too high.\n\n";
+			i--;
+		}
+		//if input is valid, add to vector
+		if (inputValid) {
+			v.push_back(input.getInputValue());
+		}
+	}
+	//print vector
+	cout << "Vector contains:\n";
+	printVector(v, cout);
 	cout << endl;
-	//smallest number
-	cout << "Smallest number: " << *min_element(v.begin(), v.end()) << endl;
-	//largest number
-	cout << "Largest number: " << *max_element(v.begin(), v.end()) << endl;
-	// sort vector
+	//smallest value
+	cout << "Smallest one is " << *min_element(v.begin(), v.end()) << endl;
+	//largest value
+	cout << "Largest one is " << *max_element(v.begin(), v.end()) << endl;
+	//sort vector
 	sort(v.begin(), v.end());
-	// print sorted vector
-	cout << "Sorted vector: ";
-	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
-	cout << endl;
-	// print sum of vector
+	//print sorted vector
+	cout << "Sorted vector contains:\n";
+	printVector(v, cout);
+	//sum of vector
 	int sum = 0;
-	for (int i = 0; i < num; i++)
-	{
+	for (int i = 0; i < v.size(); i++) {
 		sum += v[i];
 	}
-	// print average of vector
-	cout << "Average of vector: " << sum / num << endl;
+	//print average of vector
+	cout << "Average of this list is " << sum / v.size() << endl;
+	cout << endl;
+
+
 	
-}
+	cout << "DOUBLE version\n";
+	bool inputDoubleValid = false;
+	//create vector
+	vector<double> dv;
+	//loop 10 times
+	for (int i = 0; i < 10; i++) {
+		//get input
+		cout << "Enter a double between 60 and 100: ";
+		try {
+			inputDoubleValid = input.getDoubleInput();
+		}
+		catch (Input::TooDoubleLow) {
+			cout << "Input is too low.\n\n";
+			i--;
+		}
+		catch (Input::TooDoubleHigh) {
+			cout << "Input is too high.\n\n";
+			i--;
+		}
+		//if input is valid, add to vector
+		if (inputDoubleValid) {
+			dv.push_back(input.getDoubleInputValue());
+		}
+	}
+	//print vector
+	cout << "Vector contains:\n";
+	printVector(dv, cout);
+	cout << endl;	
+	//smallest value
+	cout << "Smallest one is " << *min_element(dv.begin(), dv.end()) << endl;
+	//largest value
+	cout << "Largest one is " << *max_element(dv.begin(), dv.end()) << endl;
+	//sort vector
+	sort(dv.begin(), dv.end());
+	//print sorted vector
+	cout << "Sorted vector contains:\n";
+	printVector(dv, cout);
+	//sum of vector
+	double dsum = 0;
+	for (int i = 0; i < dv.size(); i++) {
+		dsum += dv[i];
+	}
+	//print average of vector
+	cout << "Average of this list is " << dsum / dv.size() << endl;
+	system("pause");
+	return 0;
+} // end main function
