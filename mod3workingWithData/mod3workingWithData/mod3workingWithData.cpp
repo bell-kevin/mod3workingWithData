@@ -29,6 +29,8 @@ public:
 	Input(){
 		input = 0;
 	}
+
+	
 	
 	bool getInput(){
 		int temp = 0;
@@ -46,7 +48,7 @@ public:
 	}
 
 	bool getDoubleInput(){
-		int temp = 0;
+		double temp = 0;
 		cin >> temp;
 		if (temp < 60){
 			throw TooDoubleLow();
@@ -61,7 +63,7 @@ public:
 	}
 	
 	//return double input
-	int getDoubleInputValue() {
+	double getDoubleInputValue() {
 		return input;
 	}
 	
