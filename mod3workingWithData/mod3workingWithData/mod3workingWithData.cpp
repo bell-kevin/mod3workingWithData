@@ -29,8 +29,6 @@ public:
 	Input(){
 		input = 0;
 	}
-
-	
 	
 	bool getInput(){
 		int temp = 0;
