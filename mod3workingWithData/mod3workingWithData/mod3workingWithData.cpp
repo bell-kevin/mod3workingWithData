@@ -15,6 +15,14 @@ void printVector(const vector<T>& v, ostream& os)
 }
 
 
+//print vector for double number type
+void printDoubleVector(const vector<double>& dv, ostream& os)
+{
+	copy(dv.begin(), dv.end(), ostream_iterator<double>(os, "  "));
+	os << endl;
+}
+
+
 class Input {
 private:
 	int input = 0;
@@ -46,7 +54,7 @@ public:
 	}
 
 	bool getDoubleInput(){
-		double temp = 0;
+		double temp = 0.0;
 		cin >> temp;
 		if (temp < 60){
 			throw TooDoubleLow();
@@ -55,14 +63,14 @@ public:
 			throw TooDoubleHigh();
 		}
 		else {
-			input = temp;
+			doubleInput = temp;
 			return true;
 		}
 	}
 	
 	//return double input
 	double getDoubleInputValue() {
-		return input;
+		return doubleInput;
 	}
 	
 	//return input
@@ -120,14 +128,14 @@ int main() {
 	cout << endl;
 
 
-	
+
 	cout << "DOUBLE version\n";
 	Input doubleInput;
 	bool inputDoubleValid = false;
 	//create vector
 	vector<double> dv;
 	//loop 10 times
-	for (int i = 0; i < 10; i++) {
+	for (double i = 0; i < 10; i++) {
 		//get input
 		cout << "Enter a double between 60 and 100: ";
 		try {
@@ -146,9 +154,9 @@ int main() {
 			dv.push_back(doubleInput.getDoubleInputValue());
 		}
 	}
-	//print vector
+	//print double vector
 	cout << "Vector contains:\n";
-	printVector(dv, cout);
+	printDoubleVector(dv, cout);
 	cout << endl;
 	//smallest value
 	cout << "Smallest one is " << *min_element(dv.begin(), dv.end()) << endl;
@@ -158,14 +166,14 @@ int main() {
 	sort(dv.begin(), dv.end());
 	//print sorted vector
 	cout << "Sorted vector contains:\n";
-	printVector(dv, cout);
+	printDoubleVector(dv, cout);
 	//sum of vector
-	double dsum = 0;
+	double sumDouble = 0;
 	for (int i = 0; i < dv.size(); i++) {
-		dsum += dv[i];
+		sumDouble += dv[i];
 	}
 	//print average of vector
-	cout << "Average of this list is " << dsum / dv.size() << endl;
+	cout << "Average of this list is " << sumDouble / dv.size() << endl;
 	system("pause");
 	return 0;
 } // end main function
