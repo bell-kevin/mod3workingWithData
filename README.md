@@ -26,7 +26,7 @@ That portion of the output (for integer numbers) would look like this:
 
 Then do the same for 10 doubles in the range of 60 to 100, which would look like this:
 
-M3 Competency dbl
+![M3 Competency dbl](https://github.com/bell-kevin/mod3workingWithData/blob/main/part2.PNG)
 
 The same work happens with this vector of doubles.
 
