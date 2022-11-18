@@ -126,13 +126,8 @@ int main() {
 	//print sorted vector
 	cout << "Sorted vector contains:\n";
 	printVector(intVector.begin(), intVector.end());
-	//sum of vector
-	int sum = 0;
-	for (int i = 0; i < intVector.size(); i++) {
-		sum += intVector[i];
-	}
-	//print average of vector
-	cout << "Average of vector is: " << sum / intVector.size() << endl;
+	//calc average
+	calculateAverage(intVector.begin(), intVector.end());
 	cout << endl;
 	//double
 	//clear vector
@@ -169,13 +164,8 @@ int main() {
 	//print sorted vector
 	cout << "Sorted vector contains:\n";
 	printVector(doubleVector.begin(), doubleVector.end());
-	//sum of vector
-	double doubleSum = 0.0;
-	for (int i = 0; i < doubleVector.size(); i++) {
-		doubleSum += doubleVector[i];
-	}
-	//print average of vector
-	cout << "Average of vector is: " << doubleSum / doubleVector.size() << endl;
+	//calculateAverage
+	calculateAverage(doubleVector.begin(), doubleVector.end());
 	system("pause");
 	return 0;
 } // end main function
